@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         mServo = Servo("PWM0")
         mServo?.setPulseDurationRange(1.0, 2.0)
-        mServo?.setAngleRange((-90).toDouble(), 85.0)
+        mServo?.setAngleRange((-90).toDouble(), 90.0)
         mServo?.setEnabled(true)
 
         mDatabaseRef?.addChildEventListener(object : ChildEventListener{
@@ -41,11 +41,11 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onChildChanged(p0: DataSnapshot?, p1: String?) {
-                Log.d(TAG, "Child Chnaged")
+                Log.d(TAG, "Child Changed")
             }
 
             override fun onChildAdded(dataSnapshot: DataSnapshot?, prevChildKey: String?) {
-                Log.d(TAG, "Background Service" + dataSnapshot?.key)
+                Log.d(TAG, "New child added" + dataSnapshot?.key)
                 highFive()
 
                 // Remove the item once user has been high-fived
